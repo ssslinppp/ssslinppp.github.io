@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="努力工作, 锻炼身体">
 <meta property="og:description" content="搭建流程 安装node.js （默认会将npm一起安装） 安装hexo-cli: npm install hexo-cli -g ; 安装hexo-deployer-git：npm install hexo-deployer-git --save ; 然后是修改配置文件和安装主题等；  配置文件hexo和主题配置文件">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-10-28T15:00:02.456Z">
+<meta property="og:updated_time" content="2017-10-28T15:06:57.800Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建github博客">
 <meta name="twitter:description" content="搭建流程 安装node.js （默认会将npm一起安装） 安装hexo-cli: npm install hexo-cli -g ; 安装hexo-deployer-git：npm install hexo-deployer-git --save ; 然后是修改配置文件和安装主题等；  配置文件hexo和主题配置文件">
@@ -352,16 +352,17 @@
 
           
             
+            <!--noindex-->
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/10/28/搭建github博客/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/10/28/搭建github博客/" itemprop="commentCount"></span>
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/10/28/搭建github博客/" itemprop="commentsCount"></span>
                 </a>
               </span>
+              <!--/noindex-->
             
           
 
@@ -523,12 +524,7 @@ var jiathis_config={
 
   
     <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
+      <div id="hypercomments_widget"></div>
     </div>
 
   
@@ -806,42 +802,36 @@ var jiathis_config={
 
   
 
-    
-      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/10/28/搭建github博客/';
-          this.page.identifier = '2017/10/28/搭建github博客/';
-          this.page.title = '搭建github博客';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
-
-  
 
 
 
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 97095, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+		_hcwp.push({widget:"Stream", widget_id: 97095, xid: "2017/10/28/搭建github博客/"});
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/97095/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
 
 	
 
 
 
 
-
-  
-
-
-
-
-
-  
 
 
 
