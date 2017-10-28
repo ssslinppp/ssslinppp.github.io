@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[搭建github博客]]></title>
+    <url>%2F2017%2F10%2F28%2F%E6%90%AD%E5%BB%BAgithub%E5%8D%9A%E5%AE%A2%2F</url>
+    <content type="text"><![CDATA[搭建流程 安装node.js （默认会将npm一起安装） 安装hexo-cli: npm install hexo-cli -g ; 安装hexo-deployer-git：npm install hexo-deployer-git --save ; 然后是修改配置文件和安装主题等； 配置文件hexo和主题配置文件 主题安装使用next 主题贴标签 站点配置文件有配置：tag_dir: tags 主题配置文件有配置：tags: tags 新建tags页面： source/tags/index.md 123456---title: tagsdate: 2017-10-28 12:05:43type: &quot;tags&quot;comments: false--- 文章中添加tag： 123456title: TagEditTextdate: 2016-11-19 10:44:25tags: - Tag1 - Tag2 - Tag3 分类，给文章归档 站点配置文件有配置：category_dir: categories 主题配置文件有配置：categories: /categories 新建categories页面： source/categories/index.md 123456---title: categoriesdate: 2017-10-28 12:09:44type: &quot;categories&quot;comments: false--- 在文章中添加categories 1234title: TagEditTextdate: 2016-11-19 10:44:25categories: - cate 添加评论功能 （TODO） 采坑记录github的参考名称必须为xxx.github.io; ssh链接问题先产生ssh秘钥，然后将key添加到github上； deploy配置1234deploy: type: git repo: git@github.com:ssslinppp/ssslinppp.github.io.git branch: master ERROR Deployer not found: git执行下面的语句：1npm install hexo-deployer-git --save 然后重新执行：12hexo ghexo d 发布新文章只需要将xxx.md放到目录：source\_posts\下面，然后执行：123hexo cleanhexo ghexo d 参考链接Hexo 博客搭建指南Windows下GitHub + Hexo搭建个人博客]]></content>
+      <categories>
+        <category>install</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+        <tag>blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2017%2F10%2F28%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+</search>
