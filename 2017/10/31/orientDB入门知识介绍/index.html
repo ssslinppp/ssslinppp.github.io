@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="java, mysql" />
+  <meta name="keywords" content="orientDB,nosql," />
 
 
 
@@ -79,17 +79,27 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="description" content="orientdb基本概念orientDB是一个Document-Graph databases,是一个NoSql数据库，支持SQL查询;  Recordrecord是数据查询和存储的最小单元，主要包括4种类型：  Document： 文档数据库概念； RecordBytes： BLOB，二进制数据； Vertex： Graph 数据库概念； Edge： Graph 数据库概念；    Record">
+<meta name="keywords" content="orientDB,nosql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/10/28/hello-world/index.html">
+<meta property="og:title" content="OrientDB入门知识介绍">
+<meta property="og:url" content="http://yoursite.com/2017/10/31/orientDB入门知识介绍/index.html">
 <meta property="og:site_name" content="努力工作, 锻炼身体">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="orientdb基本概念orientDB是一个Document-Graph databases,是一个NoSql数据库，支持SQL查询;  Recordrecord是数据查询和存储的最小单元，主要包括4种类型：  Document： 文档数据库概念； RecordBytes： BLOB，二进制数据； Vertex： Graph 数据库概念； Edge： Graph 数据库概念；    Record">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-10-28T15:00:16.055Z">
+<meta property="og:image" content="http://www.orientdb.org/images/class-clusters.png">
+<meta property="og:image" content="http://www.orientdb.org/images/class-newrecord.png">
+<meta property="og:image" content="http://www.orientdb.org/images/class-query.png">
+<meta property="og:image" content="http://www.orientdb.org/images/class-query-cluster.png">
+<meta property="og:image" content="http://www.orientdb.org/images/rdbms-1to1.jpg">
+<meta property="og:image" content="http://www.orientdb.org/images/rdbms-1toN.jpg">
+<meta property="og:image" content="http://www.orientdb.org/images/rdbms-NtoM.jpg">
+<meta property="og:image" content="http://www.orientdb.org/images/orientdb-api-stack.png">
+<meta property="og:updated_time" content="2017-10-31T08:23:31.517Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="twitter:title" content="OrientDB入门知识介绍">
+<meta name="twitter:description" content="orientdb基本概念orientDB是一个Document-Graph databases,是一个NoSql数据库，支持SQL查询;  Recordrecord是数据查询和存储的最小单元，主要包括4种类型：  Document： 文档数据库概念； RecordBytes： BLOB，二进制数据； Vertex： Graph 数据库概念； Edge： Graph 数据库概念；    Record">
+<meta name="twitter:image" content="http://www.orientdb.org/images/class-clusters.png">
 
 
 
@@ -119,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/28/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/31/orientDB入门知识介绍/"/>
 
 
 
 
 
-  <title>Hello World | 努力工作, 锻炼身体</title>
+  <title>OrientDB入门知识介绍 | 努力工作, 锻炼身体</title>
   
 
 
@@ -296,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/28/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/31/orientDB入门知识介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ssslinppp">
@@ -313,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">OrientDB入门知识介绍</h1>
         
 
         <div class="post-meta">
@@ -325,8 +335,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-28T12:55:57+08:00">
-                2017-10-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T16:03:28+08:00">
+                2017-10-31
               </time>
             
 
@@ -335,6 +345,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -345,8 +377,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/28/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count hc-comment-count" data-xid="2017/10/28/hello-world/" itemprop="commentsCount"></span>
+                <a href="/2017/10/31/orientDB入门知识介绍/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/10/31/orientDB入门知识介绍/" itemprop="commentsCount"></span>
                 </a>
               </span>
               <!--/noindex-->
@@ -375,16 +407,94 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h2 id="orientdb基本概念"><a href="#orientdb基本概念" class="headerlink" title="orientdb基本概念"></a>orientdb基本概念</h2><p>orientDB是一个<code>Document-Graph databases</code>,是一个NoSql数据库，支持SQL查询; </p>
+<h3 id="Record"><a href="#Record" class="headerlink" title="Record"></a>Record</h3><p>record是数据查询和存储的最小单元，主要包括4种类型：</p>
+<ol>
+<li>Document： 文档数据库概念；</li>
+<li>RecordBytes： BLOB，二进制数据；</li>
+<li>Vertex： Graph 数据库概念；</li>
+<li>Edge： Graph 数据库概念；  </li>
+</ol>
+<h3 id="Record-ID"><a href="#Record-ID" class="headerlink" title="Record ID"></a>Record ID</h3><p>类似关系数据库中的主键，由orientDB自动分配；<br>格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#&lt;cluster&gt;:&lt;position&gt;</div><div class="line"></div><div class="line">cluster: 正数，表示持久化的record；</div><div class="line">cluster：负数，表示临时的record；</div></pre></td></tr></table></figure></p>
+<h3 id="Record-Version"><a href="#Record-Version" class="headerlink" title="Record Version"></a>Record Version</h3><p>record的每一次更新操作，<code>Record Version</code>都会自增；<br>在乐观锁事务中，通过<code>Record Version</code> 可以检测冲突；   </p>
+<h3 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h3><ul>
+<li>面向对象中的概念；</li>
+<li>类比关系型数据库中的<code>表</code>；  </li>
+<li>支持继承；</li>
+<li>一个Class可以包含1个或多个Cluster，至少应包含1个Cluster；</li>
+<li>当新建一个Class时，orientDB默认会创建N个Cluster(N：和Cpu核数相同)；</li>
+<li>逻辑框架：组织数据（与Cluster作对比）；</li>
+</ul>
+<h3 id="Cluster"><a href="#Cluster" class="headerlink" title="Cluster"></a>Cluster</h3><ul>
+<li>The Cluster is a place where a group of records are stored.</li>
+<li>用于存储record，当新建一个record时，都会将该record存储到一个Cluster中；</li>
+<li>物理或内存空间：真正存储数据（与Class作对比）；</li>
+<li>可类比 Document数据库中的集合 或 关系型数据库中的表；</li>
+<li>一个database最多可以有32767个Cluster；</li>
+</ul>
+<h3 id="Class-vs-Cluster-in-Queries"><a href="#Class-vs-Cluster-in-Queries" class="headerlink" title="Class vs. Cluster in Queries"></a>Class vs. Cluster in Queries</h3><p><a href="http://orientdb.com/docs/last/Tutorial-Clusters.html" target="_blank" rel="external">正确理解Cluster</a>  </p>
+<ul>
+<li>Class包括2个Cluster<br><img src="http://www.orientdb.org/images/class-clusters.png" alt="Class包括2个Cluster">   </li>
+<li>向Class中插入record（使用默认的Cluster）<br><img src="http://www.orientdb.org/images/class-newrecord.png" alt="向Class中插入record">   </li>
+<li>查询数据（直接查询Class）<br><img src="http://www.orientdb.org/images/class-query.png" alt="查询数据">   </li>
+<li><p>查询数据（直接查询Cluster）<br><img src="http://www.orientdb.org/images/class-query-cluster.png" alt="查询数据">     </p>
+</li>
+<li><p>示例说明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Invoice是一个Class，该Class包含2个Cluster, 分别为 invoice2016、invoice2017；</div><div class="line">Class: Invoice （包含属性 year）；</div><div class="line">Cluster1: invoice2016, 存储2016年相关数据；</div><div class="line">Cluster2: invoice2017, 存储2017年相关数据；</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>则如下查询结果相同，但查询Cluster效率更高：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 查询 Class</div><div class="line">orientdb&gt; SELECT FROM Invoice WHERE year = 2016</div><div class="line"></div><div class="line">// 查询Cluster：效率更高</div><div class="line">orientdb&gt; SELECT FROM CLUSTER:invoice2016</div></pre></td></tr></table></figure></p>
+<h3 id="Relationships"><a href="#Relationships" class="headerlink" title="Relationships"></a>Relationships</h3><p><a href="http://orientdb.com/docs/last/Tutorial-Relationships.html" target="_blank" rel="external">Relationships介绍</a>    </p>
+<ul>
+<li>关系型数据库中，一般使用Join来处理连接，如下图所示：</li>
+</ul>
+<p><img src="http://www.orientdb.org/images/rdbms-1to1.jpg" alt="1-1"><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT B.location FROM Customer A, Address B  </div><div class="line">          WHERE A.name='Luca' AND A.address=B.id;</div></pre></td></tr></table></figure></p>
+<p><img src="http://www.orientdb.org/images/rdbms-1toN.jpg" alt="1-N"><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT B.location FROM Customer A, Address B</div><div class="line">          WHERE A.name='Luca' AND B.customer=A.id;</div></pre></td></tr></table></figure></p>
+<p><img src="http://www.orientdb.org/images/rdbms-NtoM.jpg" alt="N-N"><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT C.location FROM Customer A, CustomerAddress B, Address C</div><div class="line">          WHERE A.name='Luca' AND B.id=A.id AND B.address=C.id;</div></pre></td></tr></table></figure></p>
+<p>在关系型数据库中，多表连接查询时，使用<code>JOIN</code>语句(时间复杂度：<code>O(log N / block_size)</code>)，而JOIN语句在数据量比较大时，相当耗时；  </p>
+<p>在OrientDB中，使用<code>Link</code>来管理连接，类似<code>指针</code>，查询时间为：<code>O(1)</code>;<br>orientdb支持两种relationships：</p>
+<ol>
+<li>referenced：</li>
+<li>embedded：<h4 id="Referenced-Relationships"><a href="#Referenced-Relationships" class="headerlink" title="Referenced Relationships"></a>Referenced Relationships</h4></li>
+</ol>
+<ul>
+<li>可以类比关系型数据库中的Join语句，但是比Join语句效率更高；   </li>
+<li>每个record都有rid；</li>
+<li>1:1 and n:1 Referenced Relationships；</li>
+<li>1:n and n:n Referenced Relationships；<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">                  customer</div><div class="line">  Record A     -------------&gt;    Record B</div><div class="line">CLASS=Invoice                 CLASS=Customer</div><div class="line">  RID=5:23                       RID=10:2</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>record A contains the reference to record B in the property customer</p>
+<h4 id="embedded-Relationships"><a href="#embedded-Relationships" class="headerlink" title="embedded Relationships"></a>embedded Relationships</h4><ul>
+<li>被嵌入的record没有rid；</li>
+<li>1:1 and n:1 Embedded Relationships;</li>
+<li>1:n and n:n Embedded Relationships;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">                 address</div><div class="line">  Record A     &lt;&gt;----------&gt;   Record B</div><div class="line">CLASS=Account               CLASS=Address</div><div class="line">  RID=5:23                     NO RID!</div></pre></td></tr></table></figure>
+<p>record A contains the entirety of record B in the property address<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">orientdb&gt; SELECT FROM Account WHERE address.city = &apos;Rome&apos;</div></pre></td></tr></table></figure></p>
+<h3 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h3><p><img src="http://www.orientdb.org/images/orientdb-api-stack.png" alt="Component Architecture"><br>Database URL:<code>&lt;engine&gt;:&lt;db-name&gt;</code></p>
+<ul>
+<li>plocal: This engine writes to the file system to store data.</li>
+<li>memory: Open a database completely in memory;</li>
+<li>remote: The storage will be opened via a remote network connection.<code>remote:&lt;server&gt;:[&lt;port&gt;]/db-name</code> ;</li>
+</ul>
+<h2 id="orientdb-vs-关系型数据库"><a href="#orientdb-vs-关系型数据库" class="headerlink" title="orientdb vs 关系型数据库"></a>orientdb vs 关系型数据库</h2><h3 id="区别1：-relational"><a href="#区别1：-relational" class="headerlink" title="区别1： relational"></a>区别1： relational</h3><p>最重要的区别， orientDB没有Join，而是使用Link表示连接；<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> *</div><div class="line"><span class="keyword">FROM</span> Employee A, City B</div><div class="line"><span class="keyword">WHERE</span> A.city = B.id</div><div class="line"><span class="keyword">AND</span> B.name = <span class="string">'Rome'</span></div><div class="line">(关系型数据库)</div><div class="line">vs</div><div class="line">（orientDB）</div><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Employee <span class="keyword">WHERE</span> city.name = <span class="string">'Rome'</span></div></pre></td></tr></table></figure></p>
+<h3 id="区别2-orientDB的-是可选的"><a href="#区别2-orientDB的-是可选的" class="headerlink" title="区别2: orientDB的*是可选的"></a>区别2: orientDB的<code>*</code>是可选的</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Customer</div><div class="line"></div><div class="line">vs</div><div class="line"></div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">FROM</span> Customer</div></pre></td></tr></table></figure>
+<h3 id="区别3：-DISTINCT"><a href="#区别3：-DISTINCT" class="headerlink" title="区别3： DISTINCT"></a>区别3： DISTINCT</h3><ul>
+<li>SQL: DISTINCT是关键字；</li>
+<li>OrientDB： DISTINCT是函数；<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> <span class="keyword">name</span> <span class="keyword">FROM</span> City</div><div class="line"></div><div class="line">vs</div><div class="line"></div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span>(<span class="keyword">name</span>) <span class="keyword">FROM</span> City</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="区别4：-HAVING"><a href="#区别4：-HAVING" class="headerlink" title="区别4： HAVING"></a>区别4： HAVING</h3><p>orientdb不支持Having；<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> city, <span class="keyword">sum</span>(salary) <span class="keyword">AS</span> salary</div><div class="line"><span class="keyword">FROM</span> Employee</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> city</div><div class="line"><span class="keyword">HAVING</span> salary &gt; <span class="number">1000</span></div><div class="line"></div><div class="line">vs </div><div class="line"></div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">FROM</span> ( <span class="keyword">SELECT</span> city, <span class="keyword">SUM</span>(salary) <span class="keyword">AS</span> salary <span class="keyword">FROM</span> Employee <span class="keyword">GROUP</span> <span class="keyword">BY</span> city ) <span class="keyword">WHERE</span> salary &gt; <span class="number">1000</span></div></pre></td></tr></table></figure></p>
+<h3 id="区别5：-多表查询"><a href="#区别5：-多表查询" class="headerlink" title="区别5： 多表查询"></a>区别5： 多表查询</h3><p>orientDB查询：一次最多只支持一个Class查询，不支持类似：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">FROM</span> E, V (不支持)</div></pre></td></tr></table></figure></p>
+<h3 id="区别6：-metadata"><a href="#区别6：-metadata" class="headerlink" title="区别6： metadata"></a>区别6： metadata</h3><p>orientDB支持查询 metadata；</p>
+<ul>
+<li><code>schema</code>, to get classes and properties</li>
+<li><code>indexmanager</code>, to get information about indexes<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> expand(classes) <span class="keyword">from</span> metadata:<span class="keyword">schema</span></div><div class="line"></div><div class="line"><span class="keyword">select</span> expand(properties) <span class="keyword">from</span> (</div><div class="line">   <span class="keyword">select</span> expand(classes) <span class="keyword">from</span> metadata:<span class="keyword">schema</span></div><div class="line">) <span class="keyword">where</span> <span class="keyword">name</span> = <span class="string">'OUser'</span></div><div class="line"></div><div class="line"><span class="keyword">select</span> customFields <span class="keyword">from</span> (</div><div class="line">    <span class="keyword">select</span> expand(classes) <span class="keyword">from</span> metadata:<span class="keyword">schema</span> </div><div class="line">) <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">"OUser"</span></div><div class="line"></div><div class="line">elect customFields <span class="keyword">from</span> (</div><div class="line">  <span class="keyword">select</span> expand(properties) <span class="keyword">from</span> (</div><div class="line">     <span class="keyword">select</span> expand(classes) <span class="keyword">from</span> metadata:<span class="keyword">schema</span> </div><div class="line">  ) <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">"OUser"</span></div><div class="line">) <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">"password"</span></div><div class="line"></div><div class="line"><span class="keyword">select</span> expand(<span class="keyword">indexes</span>) <span class="keyword">from</span> metadata:indexmanager</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="orientDB相关文章"><a href="#orientDB相关文章" class="headerlink" title="orientDB相关文章"></a>orientDB相关文章</h2><p><a href="http://orientdb.com/docs/last/Replication.html" target="_blank" rel="external">Multi-master replication</a><br><a href="http://orientdb.com/docs/last/Distributed-Architecture.html" target="_blank" rel="external">Distributed Architecture</a><br><a href="http://orientdb.com/docs/last/Distributed-Sharding.html" target="_blank" rel="external">Distributed-Sharding</a>   </p>
 
       
     </div>
@@ -400,6 +510,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/orientDB/" rel="tag"># orientDB</a>
+          
+            <a href="/tags/nosql/" rel="tag"># nosql</a>
+          
+        </div>
+      
 
       
       
@@ -409,15 +527,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/10/28/搭建github博客/" rel="next" title="搭建github博客">
+                <i class="fa fa-chevron-left"></i> 搭建github博客
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/28/搭建github博客/" rel="prev" title="搭建github博客">
-                搭建github博客 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -596,7 +714,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#orientdb基本概念"><span class="nav-number">1.</span> <span class="nav-text">orientdb基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Record"><span class="nav-number">1.1.</span> <span class="nav-text">Record</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Record-ID"><span class="nav-number">1.2.</span> <span class="nav-text">Record ID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Record-Version"><span class="nav-number">1.3.</span> <span class="nav-text">Record Version</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Class"><span class="nav-number">1.4.</span> <span class="nav-text">Class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cluster"><span class="nav-number">1.5.</span> <span class="nav-text">Cluster</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Class-vs-Cluster-in-Queries"><span class="nav-number">1.6.</span> <span class="nav-text">Class vs. Cluster in Queries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Relationships"><span class="nav-number">1.7.</span> <span class="nav-text">Relationships</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Referenced-Relationships"><span class="nav-number">1.7.1.</span> <span class="nav-text">Referenced Relationships</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#embedded-Relationships"><span class="nav-number">1.7.2.</span> <span class="nav-text">embedded Relationships</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Database"><span class="nav-number">1.8.</span> <span class="nav-text">Database</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orientdb-vs-关系型数据库"><span class="nav-number">2.</span> <span class="nav-text">orientdb vs 关系型数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#区别1：-relational"><span class="nav-number">2.1.</span> <span class="nav-text">区别1： relational</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别2-orientDB的-是可选的"><span class="nav-number">2.2.</span> <span class="nav-text">区别2: orientDB的*是可选的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别3：-DISTINCT"><span class="nav-number">2.3.</span> <span class="nav-text">区别3： DISTINCT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别4：-HAVING"><span class="nav-number">2.4.</span> <span class="nav-text">区别4： HAVING</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别5：-多表查询"><span class="nav-number">2.5.</span> <span class="nav-text">区别5： 多表查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别6：-metadata"><span class="nav-number">2.6.</span> <span class="nav-text">区别6： metadata</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orientDB相关文章"><span class="nav-number">3.</span> <span class="nav-text">orientDB相关文章</span></a></li></ol></div>
             
 
           </div>
@@ -763,7 +881,7 @@ var jiathis_config={
 		_hcwp.push({widget:"Bloggerstream", widget_id: 97095, selector:".hc-comment-count", label: "{\%COUNT%\}" });
 
 		
-		_hcwp.push({widget:"Stream", widget_id: 97095, xid: "2017/10/28/hello-world/"});
+		_hcwp.push({widget:"Stream", widget_id: 97095, xid: "2017/10/31/orientDB入门知识介绍/"});
 		
 
 		(function() {
