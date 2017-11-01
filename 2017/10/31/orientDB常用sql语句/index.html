@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="java, mysql" />
+  <meta name="keywords" content="orientDB,nosql,sql," />
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="Java, mysql">
-<meta property="og:type" content="website">
-<meta property="og:title" content="努力工作, 锻炼身体">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="概述本文简单的介绍了一些常用的orientDB查询语句，仅供参考。">
+<meta name="keywords" content="orientDB,nosql,sql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OrientDB常用SQL">
+<meta property="og:url" content="http://yoursite.com/2017/10/31/orientDB常用sql语句/index.html">
 <meta property="og:site_name" content="努力工作, 锻炼身体">
-<meta property="og:description" content="Java, mysql">
+<meta property="og:description" content="概述本文简单的介绍了一些常用的orientDB查询语句，仅供参考。">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-11-01T06:29:05.852Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="努力工作, 锻炼身体">
-<meta name="twitter:description" content="Java, mysql">
+<meta name="twitter:title" content="OrientDB常用SQL">
+<meta name="twitter:description" content="概述本文简单的介绍了一些常用的orientDB查询语句，仅供参考。">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/31/orientDB常用sql语句/"/>
 
 
 
 
 
-  <title>努力工作, 锻炼身体</title>
+  <title>OrientDB常用SQL | 努力工作, 锻炼身体</title>
   
 
 
@@ -143,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -281,9 +282,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -313,9 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/31/orientDB常用sql语句/" itemprop="url">OrientDB常用SQL</a></h1>
+          <h1 class="post-title" itemprop="name headline">OrientDB常用SQL</h1>
         
 
         <div class="post-meta">
@@ -327,7 +326,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T08:41:00Z">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T16:41:00+08:00">
                 2017-10-31
               </time>
             
@@ -399,16 +398,26 @@
       
 
       
-        
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本文简单的介绍了一些常用的orientDB查询语句，仅供参考。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/31/orientDB常用sql语句/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本文简单的介绍了一些常用的orientDB查询语句，仅供参考。</p>
+<a id="more"></a>
+<h1 id="查询语句"><a href="#查询语句" class="headerlink" title="查询语句"></a>查询语句</h1><h2 id="Record-attributes"><a href="#Record-attributes" class="headerlink" title="Record attributes"></a>Record attributes</h2><h3 id="toJson"><a href="#toJson" class="headerlink" title="toJson()"></a>toJson()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">orientdb &#123;db=demo&#125;&gt; select @this.toJSON() from ouser</div><div class="line"></div><div class="line">+----+------------------------------------------------------------------------------------------------------------------------------------+</div><div class="line">|#   |this                                                                                                                                |</div><div class="line">+----+------------------------------------------------------------------------------------------------------------------------------------+</div><div class="line">|0   |&#123;&quot;@type&quot;:&quot;d&quot;,&quot;@rid&quot;:&quot;#5:0&quot;,&quot;@version&quot;:1,&quot;@class&quot;:&quot;OUser&quot;,&quot;name&quot;:&quot;admin&quot;,&quot;password&quot;:&quot;&#123;PBKDF2WithHmacSHA256&#125;F094D23F35FDBF203FA9CFF...|</div><div class="line">|1   |&#123;&quot;@type&quot;:&quot;d&quot;,&quot;@rid&quot;:&quot;#5:1&quot;,&quot;@version&quot;:1,&quot;@class&quot;:&quot;OUser&quot;,&quot;name&quot;:&quot;reader&quot;,&quot;password&quot;:&quot;&#123;PBKDF2WithHmacSHA256&#125;D69C58952FFC2F66BBD174...|</div><div class="line">|2   |&#123;&quot;@type&quot;:&quot;d&quot;,&quot;@rid&quot;:&quot;#5:2&quot;,&quot;@version&quot;:1,&quot;@class&quot;:&quot;OUser&quot;,&quot;name&quot;:&quot;writer&quot;,&quot;password&quot;:&quot;&#123;PBKDF2WithHmacSHA256&#125;B8369621F7917A4850F356...|</div><div class="line">+----+------------------------------------------------------------------------------------------------------------------------------------+</div></pre></td></tr></table></figure>
+<h3 id="rid"><a href="#rid" class="headerlink" title="@rid"></a>@rid</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">select from Profile where @rid = #10:44 (不推荐，比较慢)</div><div class="line">select from #10:44 (推荐)</div></pre></td></tr></table></figure>
+<h3 id="fields"><a href="#fields" class="headerlink" title="@fields"></a>@fields</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">orientdb &#123;db=demo&#125;&gt; select @fields from ouser  </div><div class="line"></div><div class="line">+----+----------------------------+</div><div class="line">|#   |fields                      |</div><div class="line">+----+----------------------------+</div><div class="line">|0   |[name,password,status,roles]|</div><div class="line">|1   |[name,password,status,roles]|</div><div class="line">|2   |[name,password,status,roles]|</div><div class="line">+----+----------------------------+</div></pre></td></tr></table></figure>
+<h3 id="size"><a href="#size" class="headerlink" title="@size"></a>@size</h3><p>returns the record size in bytes<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">orientdb &#123;db=demo&#125;&gt; select @size from ouser  </div><div class="line"></div><div class="line">+----+----+</div><div class="line">|#   |size|</div><div class="line">+----+----+</div><div class="line">|0   |171 |</div><div class="line">|1   |172 |</div><div class="line">|2   |172 |</div><div class="line">+----+----+</div></pre></td></tr></table></figure></p>
+<h3 id="class"><a href="#class" class="headerlink" title="@class"></a>@class</h3><h2 id="Mathematics-Operators"><a href="#Mathematics-Operators" class="headerlink" title="Mathematics Operators"></a>Mathematics Operators</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select eval( &quot;amount * 120 / 100 - discount&quot; ) as finalPrice from Order</div></pre></td></tr></table></figure>
+<h2 id="Aggregated-mode"><a href="#Aggregated-mode" class="headerlink" title="Aggregated mode"></a>Aggregated mode</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT SUM(salary) FROM employee</div></pre></td></tr></table></figure>
+<h2 id="expand"><a href="#expand" class="headerlink" title="expand()"></a>expand()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">orientdb &#123;db=demo&#125;&gt; select from #5:0               </div><div class="line"></div><div class="line">+----+----+------+-----+------+------+------------------------------------------------------------------------------------------------------+</div><div class="line">|#   |@RID|@CLASS|name |status|roles |password                                                                                              |</div><div class="line">+----+----+------+-----+------+------+------------------------------------------------------------------------------------------------------+</div><div class="line">|0   |#5:0|OUser |admin|ACTIVE|[#4:0]|&#123;PBKDF2...|</div><div class="line">+----+----+------+-----+------+------+------------------------------------------------------------------------------------------------------+</div><div class="line">（roles是一个link）</div></pre></td></tr></table></figure>
+<p>查看#4:0<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">orientdb &#123;db=demo&#125;&gt; select from #4:0</div><div class="line"></div><div class="line">+----+----+------+-----+-------------+----+------------------------------+</div><div class="line">|#   |@RID|@CLASS|name |inheritedRole|mode|rules                         |</div><div class="line">+----+----+------+-----+-------------+----+------------------------------+</div><div class="line">|0   |#4:0|ORole |admin|             |1   |&#123;database.bypassRestricted=31&#125;|</div><div class="line">+----+----+------+-----+-------------+----+------------------------------+</div></pre></td></tr></table></figure></p>
+<p>将roles展开<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">orientdb &#123;db=demo&#125;&gt; select expand(roles)  from #5:0</div><div class="line"></div><div class="line">+----+----+------+-----+-------------+----+------------------------------+</div><div class="line">|#   |@RID|@CLASS|name |inheritedRole|mode|rules                         |</div><div class="line">+----+----+------+-----+-------------+----+------------------------------+</div><div class="line">|0   |#4:0|ORole |admin|             |1   |&#123;database.bypassRestricted=31&#125;|</div><div class="line">+----+----+------+-----+-------------+----+------------------------------+</div></pre></td></tr></table></figure></p>
+<h2 id="count"><a href="#count" class="headerlink" title="count"></a>count</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT COUNT(*) FROM Account</div></pre></td></tr></table></figure>
+<h2 id="min-max-avg-sum"><a href="#min-max-avg-sum" class="headerlink" title="min/max/avg/sum"></a>min/max/avg/sum</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT min(salary) FROM Account</div></pre></td></tr></table></figure>
+<h2 id="date"><a href="#date" class="headerlink" title="date()"></a>date()</h2><p>Syntax: <code>date( &lt;date-as-string&gt; [&lt;format&gt;] [,&lt;timezone&gt;] )</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT FROM Account WHERE created &lt;= date(&apos;2012-07-02&apos;, &apos;yyyy-MM-dd&apos;)</div></pre></td></tr></table></figure></p>
+<h2 id="sysdate"><a href="#sysdate" class="headerlink" title="sysdate"></a>sysdate</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">orientdb &#123;db=demo&#125;&gt; SELECT sysdate(&apos;dd-MM-yyyy HH:mm:ss&apos;),roles FROM ouser</div><div class="line"></div><div class="line">+----+-------------------+------+</div><div class="line">|#   |sysdate            |roles |</div><div class="line">+----+-------------------+------+</div><div class="line">|0   |31-10-2017 17:33:57|[#4:0]|</div><div class="line">|1   |31-10-2017 17:33:57|[#4:1]|</div><div class="line">|2   |31-10-2017 17:33:57|[#4:2]|</div><div class="line">+----+-------------------+------+</div></pre></td></tr></table></figure>
+<h2 id="format"><a href="#format" class="headerlink" title="format"></a>format</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT format(&quot;%d - Mr. %s %s (%s)&quot;, id, name, surname, address) FROM Account</div></pre></td></tr></table></figure>
+<h2 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT distinct(name) FROM City</div></pre></td></tr></table></figure>
+<h2 id="unionall"><a href="#unionall" class="headerlink" title="unionall"></a>unionall</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">orientdb &#123;db=demo&#125;&gt; select from orole                                                 </div><div class="line"></div><div class="line">+----+----+------+----+------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</div><div class="line">|#   |@RID|@CLASS|mode|name  |inheritedR|rules                                                                                                                                                                           |</div><div class="line">+----+----+------+----+------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</div><div class="line">|0   |#4:0|ORole |1   |admin |          |&#123;database.bypassRestricted=31&#125;                                                                                                                                                  |</div><div class="line">|1   |#4:1|ORole |0   |reader|          |&#123;database.cluster.internal=2, database.cluster.orole=0, database=2, database.function=2, database.schema=2, database.class.ouser=0, database.cluster.ouser=0, database.system...|</div><div class="line">|2   |#4:2|ORole |0   |writer|          |&#123;database.cluster.internal=2, database=2, database.function=2, database.schema=2, database.class.ouser=0, database.systemclusters=0, database.cluster=31, database.command=31...|</div><div class="line">+----+----+------+----+------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</div><div class="line"></div><div class="line"></div><div class="line">orientdb &#123;db=demo&#125;&gt; select unionall(@class) as class,unionall(name) as name from orole</div><div class="line"></div><div class="line">+----+-------------------+---------------------+</div><div class="line">|#   |class              |name                 |</div><div class="line">+----+-------------------+---------------------+</div><div class="line">|0   |[ORole,ORole,ORole]|[admin,reader,writer]|</div><div class="line">+----+-------------------+---------------------+</div></pre></td></tr></table></figure>
+<h2 id="Pagination-分页"><a href="#Pagination-分页" class="headerlink" title="Pagination(分页)"></a>Pagination(分页)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT FROM &lt;target&gt; [WHERE ...] SKIP &lt;records-to-skip&gt; LIMIT &lt;max-records&gt;</div></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -423,336 +432,40 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/31/orientDB入门知识介绍/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ssslinppp">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="努力工作, 锻炼身体">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/31/orientDB入门知识介绍/" itemprop="url">OrientDB入门知识介绍</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T08:03:28Z">
-                2017-10-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/orientDB/" rel="tag"># orientDB</a>
           
-
+            <a href="/tags/nosql/" rel="tag"># nosql</a>
           
-            
-            <!--noindex-->
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/31/orientDB入门知识介绍/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count hc-comment-count" data-xid="2017/10/31/orientDB入门知识介绍/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-              <!--/noindex-->
-            
+            <a href="/tags/sql/" rel="tag"># sql</a>
           
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <h2 id="orientdb基本概念"><a href="#orientdb基本概念" class="headerlink" title="orientdb基本概念"></a>orientdb基本概念</h2><p>orientDB是一个<code>Document-Graph databases</code>,是一个NoSql数据库，支持SQL查询; </p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/31/orientDB入门知识介绍/#more" rel="contents">
-              Read more &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/31/orientDB入门知识介绍/" rel="next" title="OrientDB入门知识介绍">
+                <i class="fa fa-chevron-left"></i> OrientDB入门知识介绍
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/28/搭建github博客/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ssslinppp">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="努力工作, 锻炼身体">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/28/搭建github博客/" itemprop="url">搭建github博客</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-28T05:01:28Z">
-                2017-10-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/install/" itemprop="url" rel="index">
-                    <span itemprop="name">install</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            <!--noindex-->
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/28/搭建github博客/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count hc-comment-count" data-xid="2017/10/28/搭建github博客/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-              <!--/noindex-->
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h2 id="搭建流程"><a href="#搭建流程" class="headerlink" title="搭建流程"></a>搭建流程</h2><ol>
-<li>安装node.js （默认会将npm一起安装）</li>
-<li>安装hexo-cli: <code>npm install hexo-cli -g</code> ;</li>
-<li>安装hexo-deployer-git：<code>npm install hexo-deployer-git --save</code> ;</li>
-<li>然后是修改配置文件和安装主题等；</li>
-</ol>
-<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p><a href="https://github.com/ssslinppp/conf/tree/master/github-hexo" target="_blank" rel="external">hexo和主题配置文件</a></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/28/搭建github博客/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -762,146 +475,37 @@
   </article>
 
 
-    
+
+    <div class="post-spread">
       
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/28/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ssslinppp">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="努力工作, 锻炼身体">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/28/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-28T04:55:57Z">
-                2017-10-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            <!--noindex-->
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/28/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count hc-comment-count" data-xid="2017/10/28/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-              <!--/noindex-->
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/28/hello-world/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -909,6 +513,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="hypercomments_widget"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -929,8 +542,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1006,6 +628,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询语句"><span class="nav-number">2.</span> <span class="nav-text">查询语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Record-attributes"><span class="nav-number">2.1.</span> <span class="nav-text">Record attributes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#toJson"><span class="nav-number">2.1.1.</span> <span class="nav-text">toJson()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rid"><span class="nav-number">2.1.2.</span> <span class="nav-text">@rid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fields"><span class="nav-number">2.1.3.</span> <span class="nav-text">@fields</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#size"><span class="nav-number">2.1.4.</span> <span class="nav-text">@size</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class"><span class="nav-number">2.1.5.</span> <span class="nav-text">@class</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mathematics-Operators"><span class="nav-number">2.2.</span> <span class="nav-text">Mathematics Operators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aggregated-mode"><span class="nav-number">2.3.</span> <span class="nav-text">Aggregated mode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#expand"><span class="nav-number">2.4.</span> <span class="nav-text">expand()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#count"><span class="nav-number">2.5.</span> <span class="nav-text">count</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#min-max-avg-sum"><span class="nav-number">2.6.</span> <span class="nav-text">min/max/avg/sum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#date"><span class="nav-number">2.7.</span> <span class="nav-text">date()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sysdate"><span class="nav-number">2.8.</span> <span class="nav-text">sysdate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#format"><span class="nav-number">2.9.</span> <span class="nav-text">format</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#distinct"><span class="nav-number">2.10.</span> <span class="nav-text">distinct</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unionall"><span class="nav-number">2.11.</span> <span class="nav-text">unionall</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pagination-分页"><span class="nav-number">2.12.</span> <span class="nav-text">Pagination(分页)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1139,6 +777,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -1162,6 +804,8 @@
 
 		_hcwp.push({widget:"Bloggerstream", widget_id: 97095, selector:".hc-comment-count", label: "{\%COUNT%\}" });
 
+		
+		_hcwp.push({widget:"Stream", widget_id: 97095, xid: "2017/10/31/orientDB常用sql语句/"});
 		
 
 		(function() {
