@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="orientDB,nosql,sql," />
+  <meta name="keywords" content="orientDB,nosql,sql,DriverManager,orientdb-jdbc,Java," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="概述本文简单的介绍了一些常用的orientDB查询语句，仅供参考。">
-<meta name="keywords" content="orientDB,nosql,sql">
+<meta name="description" content="驱动注册 DriverManager管理所有的JdbcDriver； Driver实现类（OrientJdbcDriver）：所有实现类都需要注册到DriverManage中； Class.forName(“xxxx”): 使用反射实现所有的Driver注册；">
+<meta name="keywords" content="orientDB,nosql,sql,DriverManager,orientdb-jdbc,Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OrientDB常用SQL">
-<meta property="og:url" content="http://yoursite.com/2017/10/31/orientDB常用sql语句/index.html">
+<meta property="og:title" content="OrientDB-JDBC-驱动注册与连接获取-源码分析">
+<meta property="og:url" content="http://yoursite.com/2017/11/02/OrientDB-JDBC-驱动注册与连接获取-源码分析/index.html">
 <meta property="og:site_name" content="努力工作, 锻炼身体">
-<meta property="og:description" content="概述本文简单的介绍了一些常用的orientDB查询语句，仅供参考。">
+<meta property="og:description" content="驱动注册 DriverManager管理所有的JdbcDriver； Driver实现类（OrientJdbcDriver）：所有实现类都需要注册到DriverManage中； Class.forName(“xxxx”): 使用反射实现所有的Driver注册；">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-11-01T06:29:05.852Z">
+<meta property="og:updated_time" content="2017-11-02T07:16:57.903Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OrientDB常用SQL">
-<meta name="twitter:description" content="概述本文简单的介绍了一些常用的orientDB查询语句，仅供参考。">
+<meta name="twitter:title" content="OrientDB-JDBC-驱动注册与连接获取-源码分析">
+<meta name="twitter:description" content="驱动注册 DriverManager管理所有的JdbcDriver； Driver实现类（OrientJdbcDriver）：所有实现类都需要注册到DriverManage中； Class.forName(“xxxx”): 使用反射实现所有的Driver注册；">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/31/orientDB常用sql语句/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/02/OrientDB-JDBC-驱动注册与连接获取-源码分析/"/>
 
 
 
 
 
-  <title>OrientDB常用SQL | 努力工作, 锻炼身体</title>
+  <title>OrientDB-JDBC-驱动注册与连接获取-源码分析 | 努力工作, 锻炼身体</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/31/orientDB常用sql语句/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/02/OrientDB-JDBC-驱动注册与连接获取-源码分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ssslinppp">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">OrientDB常用SQL</h1>
+          <h1 class="post-title" itemprop="name headline">OrientDB-JDBC-驱动注册与连接获取-源码分析</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T16:41:00+08:00">
-                2017-10-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-02T11:04:37+08:00">
+                2017-11-02
               </time>
             
 
@@ -368,8 +368,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/31/orientDB常用sql语句/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count hc-comment-count" data-xid="2017/10/31/orientDB常用sql语句/" itemprop="commentsCount"></span>
+                <a href="/2017/11/02/OrientDB-JDBC-驱动注册与连接获取-源码分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/11/02/OrientDB-JDBC-驱动注册与连接获取-源码分析/" itemprop="commentsCount"></span>
                 </a>
               </span>
               <!--/noindex-->
@@ -398,25 +398,54 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本文简单的介绍了一些常用的orientDB查询语句，仅供参考。</p>
+        <h2 id="驱动注册"><a href="#驱动注册" class="headerlink" title="驱动注册"></a>驱动注册</h2><ol>
+<li>DriverManager管理所有的JdbcDriver；</li>
+<li>Driver实现类（OrientJdbcDriver）：所有实现类都需要注册到DriverManage中；</li>
+<li>Class.forName(“xxxx”): 使用反射实现所有的Driver注册；</li>
+</ol>
 <a id="more"></a>
-<h1 id="查询语句"><a href="#查询语句" class="headerlink" title="查询语句"></a>查询语句</h1><h2 id="Record-attributes"><a href="#Record-attributes" class="headerlink" title="Record attributes"></a>Record attributes</h2><h3 id="toJson"><a href="#toJson" class="headerlink" title="toJson()"></a>toJson()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">orientdb &#123;db=demo&#125;&gt; select @this.toJSON() from ouser</div><div class="line"></div><div class="line">+----+------------------------------------------------------------------------------------------------------------------------------------+</div><div class="line">|#   |this                                                                                                                                |</div><div class="line">+----+------------------------------------------------------------------------------------------------------------------------------------+</div><div class="line">|0   |&#123;&quot;@type&quot;:&quot;d&quot;,&quot;@rid&quot;:&quot;#5:0&quot;,&quot;@version&quot;:1,&quot;@class&quot;:&quot;OUser&quot;,&quot;name&quot;:&quot;admin&quot;,&quot;password&quot;:&quot;&#123;PBKDF2WithHmacSHA256&#125;F094D23F35FDBF203FA9CFF...|</div><div class="line">|1   |&#123;&quot;@type&quot;:&quot;d&quot;,&quot;@rid&quot;:&quot;#5:1&quot;,&quot;@version&quot;:1,&quot;@class&quot;:&quot;OUser&quot;,&quot;name&quot;:&quot;reader&quot;,&quot;password&quot;:&quot;&#123;PBKDF2WithHmacSHA256&#125;D69C58952FFC2F66BBD174...|</div><div class="line">|2   |&#123;&quot;@type&quot;:&quot;d&quot;,&quot;@rid&quot;:&quot;#5:2&quot;,&quot;@version&quot;:1,&quot;@class&quot;:&quot;OUser&quot;,&quot;name&quot;:&quot;writer&quot;,&quot;password&quot;:&quot;&#123;PBKDF2WithHmacSHA256&#125;B8369621F7917A4850F356...|</div><div class="line">+----+------------------------------------------------------------------------------------------------------------------------------------+</div></pre></td></tr></table></figure>
-<h3 id="rid"><a href="#rid" class="headerlink" title="@rid"></a>@rid</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">select from Profile where @rid = #10:44 (不推荐，比较慢)</div><div class="line">select from #10:44 (推荐)</div></pre></td></tr></table></figure>
-<h3 id="fields"><a href="#fields" class="headerlink" title="@fields"></a>@fields</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">orientdb &#123;db=demo&#125;&gt; select @fields from ouser  </div><div class="line"></div><div class="line">+----+----------------------------+</div><div class="line">|#   |fields                      |</div><div class="line">+----+----------------------------+</div><div class="line">|0   |[name,password,status,roles]|</div><div class="line">|1   |[name,password,status,roles]|</div><div class="line">|2   |[name,password,status,roles]|</div><div class="line">+----+----------------------------+</div></pre></td></tr></table></figure>
-<h3 id="size"><a href="#size" class="headerlink" title="@size"></a>@size</h3><p>returns the record size in bytes<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">orientdb &#123;db=demo&#125;&gt; select @size from ouser  </div><div class="line"></div><div class="line">+----+----+</div><div class="line">|#   |size|</div><div class="line">+----+----+</div><div class="line">|0   |171 |</div><div class="line">|1   |172 |</div><div class="line">|2   |172 |</div><div class="line">+----+----+</div></pre></td></tr></table></figure></p>
-<h3 id="class"><a href="#class" class="headerlink" title="@class"></a>@class</h3><h2 id="Mathematics-Operators"><a href="#Mathematics-Operators" class="headerlink" title="Mathematics Operators"></a>Mathematics Operators</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select eval( &quot;amount * 120 / 100 - discount&quot; ) as finalPrice from Order</div></pre></td></tr></table></figure>
-<h2 id="Aggregated-mode"><a href="#Aggregated-mode" class="headerlink" title="Aggregated mode"></a>Aggregated mode</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT SUM(salary) FROM employee</div></pre></td></tr></table></figure>
-<h2 id="expand"><a href="#expand" class="headerlink" title="expand()"></a>expand()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">orientdb &#123;db=demo&#125;&gt; select from #5:0               </div><div class="line"></div><div class="line">+----+----+------+-----+------+------+------------------------------------------------------------------------------------------------------+</div><div class="line">|#   |@RID|@CLASS|name |status|roles |password                                                                                              |</div><div class="line">+----+----+------+-----+------+------+------------------------------------------------------------------------------------------------------+</div><div class="line">|0   |#5:0|OUser |admin|ACTIVE|[#4:0]|&#123;PBKDF2...|</div><div class="line">+----+----+------+-----+------+------+------------------------------------------------------------------------------------------------------+</div><div class="line">（roles是一个link）</div></pre></td></tr></table></figure>
-<p>查看#4:0<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">orientdb &#123;db=demo&#125;&gt; select from #4:0</div><div class="line"></div><div class="line">+----+----+------+-----+-------------+----+------------------------------+</div><div class="line">|#   |@RID|@CLASS|name |inheritedRole|mode|rules                         |</div><div class="line">+----+----+------+-----+-------------+----+------------------------------+</div><div class="line">|0   |#4:0|ORole |admin|             |1   |&#123;database.bypassRestricted=31&#125;|</div><div class="line">+----+----+------+-----+-------------+----+------------------------------+</div></pre></td></tr></table></figure></p>
-<p>将roles展开<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">orientdb &#123;db=demo&#125;&gt; select expand(roles)  from #5:0</div><div class="line"></div><div class="line">+----+----+------+-----+-------------+----+------------------------------+</div><div class="line">|#   |@RID|@CLASS|name |inheritedRole|mode|rules                         |</div><div class="line">+----+----+------+-----+-------------+----+------------------------------+</div><div class="line">|0   |#4:0|ORole |admin|             |1   |&#123;database.bypassRestricted=31&#125;|</div><div class="line">+----+----+------+-----+-------------+----+------------------------------+</div></pre></td></tr></table></figure></p>
-<h2 id="count"><a href="#count" class="headerlink" title="count"></a>count</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT COUNT(*) FROM Account</div></pre></td></tr></table></figure>
-<h2 id="min-max-avg-sum"><a href="#min-max-avg-sum" class="headerlink" title="min/max/avg/sum"></a>min/max/avg/sum</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT min(salary) FROM Account</div></pre></td></tr></table></figure>
-<h2 id="date"><a href="#date" class="headerlink" title="date()"></a>date()</h2><p>Syntax: <code>date( &lt;date-as-string&gt; [&lt;format&gt;] [,&lt;timezone&gt;] )</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT FROM Account WHERE created &lt;= date(&apos;2012-07-02&apos;, &apos;yyyy-MM-dd&apos;)</div></pre></td></tr></table></figure></p>
-<h2 id="sysdate"><a href="#sysdate" class="headerlink" title="sysdate"></a>sysdate</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">orientdb &#123;db=demo&#125;&gt; SELECT sysdate(&apos;dd-MM-yyyy HH:mm:ss&apos;),roles FROM ouser</div><div class="line"></div><div class="line">+----+-------------------+------+</div><div class="line">|#   |sysdate            |roles |</div><div class="line">+----+-------------------+------+</div><div class="line">|0   |31-10-2017 17:33:57|[#4:0]|</div><div class="line">|1   |31-10-2017 17:33:57|[#4:1]|</div><div class="line">|2   |31-10-2017 17:33:57|[#4:2]|</div><div class="line">+----+-------------------+------+</div></pre></td></tr></table></figure>
-<h2 id="format"><a href="#format" class="headerlink" title="format"></a>format</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT format(&quot;%d - Mr. %s %s (%s)&quot;, id, name, surname, address) FROM Account</div></pre></td></tr></table></figure>
-<h2 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT distinct(name) FROM City</div></pre></td></tr></table></figure>
-<h2 id="unionall"><a href="#unionall" class="headerlink" title="unionall"></a>unionall</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">orientdb &#123;db=demo&#125;&gt; select from orole                                                 </div><div class="line"></div><div class="line">+----+----+------+----+------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</div><div class="line">|#   |@RID|@CLASS|mode|name  |inheritedR|rules                                                                                                                                                                           |</div><div class="line">+----+----+------+----+------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</div><div class="line">|0   |#4:0|ORole |1   |admin |          |&#123;database.bypassRestricted=31&#125;                                                                                                                                                  |</div><div class="line">|1   |#4:1|ORole |0   |reader|          |&#123;database.cluster.internal=2, database.cluster.orole=0, database=2, database.function=2, database.schema=2, database.class.ouser=0, database.cluster.ouser=0, database.system...|</div><div class="line">|2   |#4:2|ORole |0   |writer|          |&#123;database.cluster.internal=2, database=2, database.function=2, database.schema=2, database.class.ouser=0, database.systemclusters=0, database.cluster=31, database.command=31...|</div><div class="line">+----+----+------+----+------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</div><div class="line"></div><div class="line"></div><div class="line">orientdb &#123;db=demo&#125;&gt; select unionall(@class) as class,unionall(name) as name from orole</div><div class="line"></div><div class="line">+----+-------------------+---------------------+</div><div class="line">|#   |class              |name                 |</div><div class="line">+----+-------------------+---------------------+</div><div class="line">|0   |[ORole,ORole,ORole]|[admin,reader,writer]|</div><div class="line">+----+-------------------+---------------------+</div></pre></td></tr></table></figure>
-<h2 id="Pagination-分页"><a href="#Pagination-分页" class="headerlink" title="Pagination(分页)"></a>Pagination(分页)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT FROM &lt;target&gt; [WHERE ...] SKIP &lt;records-to-skip&gt; LIMIT &lt;max-records&gt;</div></pre></td></tr></table></figure>
+<h3 id="DriverManager"><a href="#DriverManager" class="headerlink" title="DriverManager"></a>DriverManager</h3><p>Java中使用DriverManager来管理所有的JDBC驱动，每一个新添加的JDBCDriver都需要首先注册到DriverManager中，DriverManager使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private final static CopyOnWriteArrayList&lt;DriverInfo&gt; registeredDrivers = new CopyOnWriteArrayList&lt;&gt;();</div></pre></td></tr></table></figure></p>
+<p>来管理所有注册的驱动，DriverManager提供了注册方法，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public static synchronized void registerDriver(java.sql.Driver driver,</div><div class="line">          DriverAction da)</div><div class="line">      throws SQLException &#123;</div><div class="line"></div><div class="line">      /* Register the driver if it has not already been added to our list */</div><div class="line">      if(driver != null) &#123;</div><div class="line">          registeredDrivers.addIfAbsent(new DriverInfo(driver, da));</div><div class="line">      &#125; else &#123;</div><div class="line">          // This is for compatibility with the original DriverManager</div><div class="line">          throw new NullPointerException();</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      println(&quot;registerDriver: &quot; + driver);</div><div class="line"></div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="OrientJdbcDriver"><a href="#OrientJdbcDriver" class="headerlink" title="OrientJdbcDriver"></a>OrientJdbcDriver</h3><p>Driver官方接口文档中，指明驱动注册方法: <code>Class.forName(&quot;foo.bah.Driver&quot;)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">* &lt;P&gt;When a Driver class is loaded, it should create an instance of</div><div class="line">* itself and register it with the DriverManager. This means that a</div><div class="line">* user can load and register a driver by calling:</div><div class="line">* &lt;p&gt;</div><div class="line">* &#123;@code Class.forName(&quot;foo.bah.Driver&quot;)&#125;</div></pre></td></tr></table></figure></p>
+<p>OrientJdbcDriver源码中代码：使用static块实现驱动的注册<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public class OrientJdbcDriver implements java.sql.Driver &#123;</div><div class="line">  static &#123;</div><div class="line">    try &#123;</div><div class="line">      DriverManager.registerDriver(new OrientJdbcDriver());</div><div class="line">    &#125; catch (SQLException e) &#123;</div><div class="line">      OLogManager.instance().error(null, &quot;Error while registering the JDBC Driver&quot;, e);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Class-forName-“xxxx”"><a href="#Class-forName-“xxxx”" class="headerlink" title="Class.forName(“xxxx”)"></a>Class.forName(“xxxx”)</h3><p>Java后台代码如果新增驱动，则只需要使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Class.forName(OrientJdbcDriver.class.getName());</div></pre></td></tr></table></figure></p>
+<p>即可完成驱动注册：  </p>
+<ol>
+<li>通过反射创建<code>XXXDriver</code>的实例；  </li>
+<li>该实例会自动调用 static 块，实现驱动的注册；  </li>
+</ol>
+<hr>
+<h2 id="使用DriverManage获取Connection"><a href="#使用DriverManage获取Connection" class="headerlink" title="使用DriverManage获取Connection"></a>使用DriverManage获取Connection</h2><h3 id="DriverManager-getConnection-xxx-xxx"><a href="#DriverManager-getConnection-xxx-xxx" class="headerlink" title="DriverManager.getConnection(xxx,xxx)"></a>DriverManager.getConnection(xxx,xxx)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">String url = &quot;jdbc:orient:remote:192.168.35.129/demo&quot;;</div><div class="line"></div><div class="line">Properties info = new Properties();</div><div class="line">String user = &quot;root&quot;;</div><div class="line">String password = &quot;root&quot;;</div><div class="line">info.put(&quot;user&quot;, user);</div><div class="line">info.put(&quot;password&quot;, password);</div><div class="line">info.put(&quot;db.usePool&quot;, true);</div><div class="line">info.put(&quot;db.pool.min&quot;, &quot;3&quot;);   // MINIMUM POOL SIZE</div><div class="line">info.put(&quot;db.pool.max&quot;, &quot;30&quot;);  // MAXIMUM POOL SIZE</div><div class="line"></div><div class="line">Connection connection = (OrientJdbcConnection) DriverManager.getConnection(url, info);</div></pre></td></tr></table></figure>
+<h3 id="DriverManager-getConnection-源码分析"><a href="#DriverManager-getConnection-源码分析" class="headerlink" title="DriverManager.getConnection()源码分析"></a>DriverManager.getConnection()源码分析</h3><ol>
+<li>首先获取ClassLoader；</li>
+<li>遍历所有注册的Drivers（registeredDrivers）；</li>
+<li>依次调用这些Driver的connect()方法，直到获取到相应的Connection才结束；<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">private static Connection getConnection(</div><div class="line">        String url, java.util.Properties info, Class&lt;?&gt; caller) throws SQLException &#123;</div><div class="line">        </div><div class="line">        // 获取ClassLoader</div><div class="line">        ClassLoader callerCL = caller != null ? caller.getClassLoader() : null;</div><div class="line">        synchronized(DriverManager.class) &#123;</div><div class="line">            // synchronize loading of the correct classloader.</div><div class="line">            if (callerCL == null) &#123;</div><div class="line">                callerCL = Thread.currentThread().getContextClassLoader();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if(url == null) &#123;</div><div class="line">            throw new SQLException(&quot;The url cannot be null&quot;, &quot;08001&quot;);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        SQLException reason = null;</div><div class="line"></div><div class="line">        // 遍历所有已注册Driver，依次调用方法connection()，直到获取到Connection</div><div class="line">        for(DriverInfo aDriver : registeredDrivers) &#123;</div><div class="line">            if(isDriverAllowed(aDriver.driver, callerCL)) &#123;</div><div class="line">                try &#123;</div><div class="line">                    Connection con = aDriver.driver.connect(url, info);</div><div class="line">                    if (con != null) &#123;</div><div class="line">                        return (con);</div><div class="line">                    &#125;</div><div class="line">                &#125; catch (SQLException ex) &#123;</div><div class="line">                    if (reason == null) &#123;</div><div class="line">                        reason = ex;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125; else &#123;</div><div class="line">                println(&quot;    skipping: &quot; + aDriver.getClass().getName());</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // if we got here nobody could connect.</div><div class="line">        if (reason != null)    &#123;</div><div class="line">            throw reason;</div><div class="line">        &#125;</div><div class="line">        throw new SQLException(&quot;No suitable driver found for &quot;+ url, &quot;08001&quot;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="OrientJdbcDriver获取Connection"><a href="#OrientJdbcDriver获取Connection" class="headerlink" title="OrientJdbcDriver获取Connection"></a>OrientJdbcDriver获取Connection</h3><ol>
+<li>获取user和passwd；</li>
+<li>判断是否使用数据库连接池(pool);</li>
+<li>获取连接；</li>
+</ol>
+<p>源码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public Connection connect(String url, Properties info) throws SQLException &#123;</div><div class="line">   if (!acceptsURL(url))</div><div class="line">     return null;</div><div class="line">   return new OrientJdbcConnection(url, info);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">public OrientJdbcConnection(final String jdbcdDUrl, final Properties info) &#123;</div><div class="line">    this.dbUrl = jdbcdDUrl.replace(&quot;jdbc:orient:&quot;, &quot;&quot;);</div><div class="line"></div><div class="line">    this.info = info;</div><div class="line"></div><div class="line">    readOnly = false;</div><div class="line">    final String username = info.getProperty(&quot;user&quot;, &quot;admin&quot;);</div><div class="line">    final String password = info.getProperty(&quot;password&quot;, &quot;admin&quot;);</div><div class="line"></div><div class="line">    usePool = Boolean.parseBoolean(info.getProperty(&quot;db.usePool&quot;, &quot;false&quot;));</div><div class="line">    if (usePool) &#123;</div><div class="line">      OPartitionedDatabasePool pool = POOL_FACTORY.get(dbUrl, username, password);</div><div class="line">      database = pool.acquire();</div><div class="line">    &#125; else &#123;</div><div class="line">      database = new ODatabaseDocumentTx(this.dbUrl);</div><div class="line">      database.open(username, password);</div><div class="line">      database.activateOnCurrentThread();</div><div class="line">    &#125;</div><div class="line">    status = ODatabase.STATUS.OPEN;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="orientDB数据库连接池的使用"><a href="#orientDB数据库连接池的使用" class="headerlink" title="orientDB数据库连接池的使用"></a>orientDB数据库连接池的使用</h3><h4 id="PoolIdentity"><a href="#PoolIdentity" class="headerlink" title="PoolIdentity"></a>PoolIdentity</h4><ol>
+<li>PoolIdentity包括3个属性，url,user,userPassword, 简单理解：每个databaseUrl对应一个pool；</li>
+<li>PoolIdentity：不可变对象；</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private final ConcurrentLinkedHashMap&lt;PoolIdentity, OPartitionedDatabasePool&gt; poolStore;</div></pre></td></tr></table></figure>
+<p>需要说明的是：</p>
+<ul>
+<li>HashMap中的Key值，一般使用String或不可变对象，此时就需要PoolIdentity为不可变实现；</li>
+<li><p>HashMap的Key值，hashcode()的返回结果应尽量均匀分布；  </p>
+<p>看看源码中的实现：</p>
+</li>
+</ul>
+<ol>
+<li>使用final声明为不可变对象；</li>
+<li>只有构造函数，没有setter之类的方法；  ==&gt; 从而保证作为Key时，hashcode()不会改变；</li>
+<li>hashcode()重新实现：具体实现不做分析，目的是为了保证hash值平均分布；</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">private static final class PoolIdentity &#123;</div><div class="line">    private final String url;</div><div class="line">    private final String userName;</div><div class="line">    private final String userPassword;</div><div class="line"></div><div class="line">    private PoolIdentity(final String url, final String userName, final String userPassword) &#123;</div><div class="line">      this.url = url;</div><div class="line">      this.userName = userName;</div><div class="line">      this.userPassword = userPassword;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean equals(final Object o) &#123;</div><div class="line">      if (this == o)</div><div class="line">        return true;</div><div class="line">      if (o == null || getClass() != o.getClass())</div><div class="line">        return false;</div><div class="line"></div><div class="line">      final PoolIdentity that = (PoolIdentity) o;</div><div class="line"></div><div class="line">      if (!url.equals(that.url))</div><div class="line">        return false;</div><div class="line">      if (!userName.equals(that.userName))</div><div class="line">        return false;</div><div class="line">      if (!userPassword.equals(that.userPassword))</div><div class="line">        return false;</div><div class="line"></div><div class="line">      return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int hashCode() &#123;</div><div class="line">      int result = url.hashCode();</div><div class="line">      result = 31 * result + userName.hashCode();</div><div class="line">      result = 31 * result + userPassword.hashCode();</div><div class="line">      return result;</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -440,6 +469,12 @@
           
             <a href="/tags/sql/" rel="tag"># sql</a>
           
+            <a href="/tags/DriverManager/" rel="tag"># DriverManager</a>
+          
+            <a href="/tags/orientdb-jdbc/" rel="tag"># orientdb-jdbc</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
         </div>
       
 
@@ -451,8 +486,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/31/orientDB入门知识介绍/" rel="next" title="OrientDB入门知识介绍">
-                <i class="fa fa-chevron-left"></i> OrientDB入门知识介绍
+              <a href="/2017/10/31/orientDB常用sql语句/" rel="next" title="OrientDB常用SQL">
+                <i class="fa fa-chevron-left"></i> OrientDB常用SQL
               </a>
             
           </div>
@@ -460,10 +495,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/02/OrientDB-JDBC-驱动注册与连接获取-源码分析/" rel="prev" title="OrientDB-JDBC-驱动注册与连接获取-源码分析">
-                OrientDB-JDBC-驱动注册与连接获取-源码分析 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -642,7 +673,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询语句"><span class="nav-number">2.</span> <span class="nav-text">查询语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Record-attributes"><span class="nav-number">2.1.</span> <span class="nav-text">Record attributes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#toJson"><span class="nav-number">2.1.1.</span> <span class="nav-text">toJson()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rid"><span class="nav-number">2.1.2.</span> <span class="nav-text">@rid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fields"><span class="nav-number">2.1.3.</span> <span class="nav-text">@fields</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#size"><span class="nav-number">2.1.4.</span> <span class="nav-text">@size</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class"><span class="nav-number">2.1.5.</span> <span class="nav-text">@class</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mathematics-Operators"><span class="nav-number">2.2.</span> <span class="nav-text">Mathematics Operators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aggregated-mode"><span class="nav-number">2.3.</span> <span class="nav-text">Aggregated mode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#expand"><span class="nav-number">2.4.</span> <span class="nav-text">expand()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#count"><span class="nav-number">2.5.</span> <span class="nav-text">count</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#min-max-avg-sum"><span class="nav-number">2.6.</span> <span class="nav-text">min/max/avg/sum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#date"><span class="nav-number">2.7.</span> <span class="nav-text">date()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sysdate"><span class="nav-number">2.8.</span> <span class="nav-text">sysdate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#format"><span class="nav-number">2.9.</span> <span class="nav-text">format</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#distinct"><span class="nav-number">2.10.</span> <span class="nav-text">distinct</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unionall"><span class="nav-number">2.11.</span> <span class="nav-text">unionall</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pagination-分页"><span class="nav-number">2.12.</span> <span class="nav-text">Pagination(分页)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#驱动注册"><span class="nav-number">1.</span> <span class="nav-text">驱动注册</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DriverManager"><span class="nav-number">1.1.</span> <span class="nav-text">DriverManager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OrientJdbcDriver"><span class="nav-number">1.2.</span> <span class="nav-text">OrientJdbcDriver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Class-forName-“xxxx”"><span class="nav-number">1.3.</span> <span class="nav-text">Class.forName(“xxxx”)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用DriverManage获取Connection"><span class="nav-number">2.</span> <span class="nav-text">使用DriverManage获取Connection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DriverManager-getConnection-xxx-xxx"><span class="nav-number">2.1.</span> <span class="nav-text">DriverManager.getConnection(xxx,xxx)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DriverManager-getConnection-源码分析"><span class="nav-number">2.2.</span> <span class="nav-text">DriverManager.getConnection()源码分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OrientJdbcDriver获取Connection"><span class="nav-number">2.3.</span> <span class="nav-text">OrientJdbcDriver获取Connection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orientDB数据库连接池的使用"><span class="nav-number">2.4.</span> <span class="nav-text">orientDB数据库连接池的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PoolIdentity"><span class="nav-number">2.4.1.</span> <span class="nav-text">PoolIdentity</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -809,7 +840,7 @@ var jiathis_config={
 		_hcwp.push({widget:"Bloggerstream", widget_id: 97095, selector:".hc-comment-count", label: "{\%COUNT%\}" });
 
 		
-		_hcwp.push({widget:"Stream", widget_id: 97095, xid: "2017/10/31/orientDB常用sql语句/"});
+		_hcwp.push({widget:"Stream", widget_id: 97095, xid: "2017/11/02/OrientDB-JDBC-驱动注册与连接获取-源码分析/"});
 		
 
 		(function() {
