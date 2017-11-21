@@ -296,6 +296,165 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/21/【XML读写】使用Java POJO实现XML文件的读写/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ssslinppp">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="努力工作, 锻炼身体">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/21/【XML读写】使用Java POJO实现XML文件的读写/" itemprop="url">【XML读写】使用Java POJO实现XML文件的读写</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-21T06:53:26Z">
+                2017-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            <!--noindex-->
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/21/【XML读写】使用Java POJO实现XML文件的读写/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/11/21/【XML读写】使用Java POJO实现XML文件的读写/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+              <!--/noindex-->
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="读写XML"><a href="#读写XML" class="headerlink" title="读写XML"></a>读写XML</h1><p>使用fasterxml实现XML文件的读写操作。<br>完全使用注解的方式读取XML内容，使用方便。  </p>
+<h2 id="Step1：将Java-POJO对象写入到XML文件，文件内容如下"><a href="#Step1：将Java-POJO对象写入到XML文件，文件内容如下" class="headerlink" title="Step1：将Java POJO对象写入到XML文件，文件内容如下"></a>Step1：将Java POJO对象写入到XML文件，文件内容如下</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">schema</span> <span class="attr">name</span>=<span class="string">"post"</span> <span class="attr">version</span>=<span class="string">"1.5"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">uniqueKey</span>&gt;</span>post_id<span class="tag">&lt;/<span class="name">uniqueKey</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">types</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldType</span> <span class="attr">className</span>=<span class="string">"java.lang.Long"</span> <span class="attr">name</span>=<span class="string">"Long"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldType</span> <span class="attr">className</span>=<span class="string">"java.lang.String"</span> <span class="attr">name</span>=<span class="string">"String"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldType</span> <span class="attr">className</span>=<span class="string">"xxx.yyy.text"</span> <span class="attr">name</span>=<span class="string">"Text"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">analyzer</span> <span class="attr">tokenizerClass</span>=<span class="string">"solr.StandartTokenizerFactory"</span> <span class="attr">type</span>=<span class="string">"index"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">analyzer</span> <span class="attr">tokenizerClass</span>=<span class="string">"solr.StandartTokenizerFactory"</span> <span class="attr">type</span>=<span class="string">"query"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">types</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">fields</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"post_id"</span> <span class="attr">required</span>=<span class="string">"true"</span> <span class="attr">type</span>=<span class="string">"Long"</span>&gt;</span>唯一标示<span class="tag">&lt;/<span class="name">field</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"post_title"</span> <span class="attr">required</span>=<span class="string">"true"</span> <span class="attr">type</span>=<span class="string">"String"</span>&gt;</span>标题<span class="tag">&lt;/<span class="name">field</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"post_context"</span> <span class="attr">required</span>=<span class="string">"false"</span> <span class="attr">type</span>=<span class="string">"Text"</span>&gt;</span>内容<span class="tag">&lt;/<span class="name">field</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">fields</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">copyField</span> <span class="attr">dest</span>=<span class="string">"text"</span> <span class="attr">source</span>=<span class="string">"post_content"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">copyField</span> <span class="attr">dest</span>=<span class="string">"text"</span> <span class="attr">source</span>=<span class="string">"post_content"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">copyField</span> <span class="attr">dest</span>=<span class="string">"text"</span> <span class="attr">source</span>=<span class="string">"section_name"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">MyMap</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">keyA</span>&gt;</span>valueA<span class="tag">&lt;/<span class="name">keyA</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">keyB</span>&gt;</span>valueB<span class="tag">&lt;/<span class="name">keyB</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">keyC</span>&gt;</span>valueC<span class="tag">&lt;/<span class="name">keyC</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">MyMap</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">schema</span>&gt;</span></div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/21/【XML读写】使用Java POJO实现XML文件的读写/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/02/OrientDB-JDBC-驱动注册与连接获取-源码分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1107,7 +1266,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1128,8 +1287,8 @@
               
               
               <div class="site-state-item site-state-tags">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

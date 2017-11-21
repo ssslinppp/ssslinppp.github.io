@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="java, mysql" />
+  <meta name="keywords" content="Java,xml,xmlmapper,fasterxml," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="description" content="读写XML使用fasterxml实现XML文件的读写操作。完全使用注解的方式读取XML内容，使用方便。   Step1：将Java POJO对象写入到XML文件，文件内容如下1234567891011121314151617181920212223&amp;lt;schema name=&quot;post&quot; version=&quot;1.5&quot;&amp;gt;	&amp;lt;uniqueKey&amp;gt;post_id&amp;lt;/unique">
+<meta name="keywords" content="Java,xml,xmlmapper,fasterxml">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/10/28/hello-world/index.html">
+<meta property="og:title" content="【XML读写】使用Java POJO实现XML文件的读写">
+<meta property="og:url" content="http://yoursite.com/2017/11/21/【XML读写】使用Java POJO实现XML文件的读写/index.html">
 <meta property="og:site_name" content="努力工作, 锻炼身体">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="读写XML使用fasterxml实现XML文件的读写操作。完全使用注解的方式读取XML内容，使用方便。   Step1：将Java POJO对象写入到XML文件，文件内容如下1234567891011121314151617181920212223&amp;lt;schema name=&quot;post&quot; version=&quot;1.5&quot;&amp;gt;	&amp;lt;uniqueKey&amp;gt;post_id&amp;lt;/unique">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-10-28T15:00:16.055Z">
+<meta property="og:updated_time" content="2017-11-21T06:58:34.722Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="twitter:title" content="【XML读写】使用Java POJO实现XML文件的读写">
+<meta name="twitter:description" content="读写XML使用fasterxml实现XML文件的读写操作。完全使用注解的方式读取XML内容，使用方便。   Step1：将Java POJO对象写入到XML文件，文件内容如下1234567891011121314151617181920212223&amp;lt;schema name=&quot;post&quot; version=&quot;1.5&quot;&amp;gt;	&amp;lt;uniqueKey&amp;gt;post_id&amp;lt;/unique">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/28/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/21/【XML读写】使用Java POJO实现XML文件的读写/"/>
 
 
 
 
 
-  <title>Hello World | 努力工作, 锻炼身体</title>
+  <title>【XML读写】使用Java POJO实现XML文件的读写 | 努力工作, 锻炼身体</title>
   
 
 
@@ -296,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/28/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/21/【XML读写】使用Java POJO实现XML文件的读写/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ssslinppp">
@@ -313,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">【XML读写】使用Java POJO实现XML文件的读写</h1>
         
 
         <div class="post-meta">
@@ -325,8 +326,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-28T12:55:57+08:00">
-                2017-10-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-21T14:53:26+08:00">
+                2017-11-21
               </time>
             
 
@@ -335,6 +336,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -345,8 +368,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/28/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count hc-comment-count" data-xid="2017/10/28/hello-world/" itemprop="commentsCount"></span>
+                <a href="/2017/11/21/【XML读写】使用Java POJO实现XML文件的读写/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/11/21/【XML读写】使用Java POJO实现XML文件的读写/" itemprop="commentsCount"></span>
                 </a>
               </span>
               <!--/noindex-->
@@ -375,16 +398,27 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+        <h1 id="读写XML"><a href="#读写XML" class="headerlink" title="读写XML"></a>读写XML</h1><p>使用fasterxml实现XML文件的读写操作。<br>完全使用注解的方式读取XML内容，使用方便。  </p>
+<h2 id="Step1：将Java-POJO对象写入到XML文件，文件内容如下"><a href="#Step1：将Java-POJO对象写入到XML文件，文件内容如下" class="headerlink" title="Step1：将Java POJO对象写入到XML文件，文件内容如下"></a>Step1：将Java POJO对象写入到XML文件，文件内容如下</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">schema</span> <span class="attr">name</span>=<span class="string">"post"</span> <span class="attr">version</span>=<span class="string">"1.5"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">uniqueKey</span>&gt;</span>post_id<span class="tag">&lt;/<span class="name">uniqueKey</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">types</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldType</span> <span class="attr">className</span>=<span class="string">"java.lang.Long"</span> <span class="attr">name</span>=<span class="string">"Long"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldType</span> <span class="attr">className</span>=<span class="string">"java.lang.String"</span> <span class="attr">name</span>=<span class="string">"String"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldType</span> <span class="attr">className</span>=<span class="string">"xxx.yyy.text"</span> <span class="attr">name</span>=<span class="string">"Text"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">analyzer</span> <span class="attr">tokenizerClass</span>=<span class="string">"solr.StandartTokenizerFactory"</span> <span class="attr">type</span>=<span class="string">"index"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">analyzer</span> <span class="attr">tokenizerClass</span>=<span class="string">"solr.StandartTokenizerFactory"</span> <span class="attr">type</span>=<span class="string">"query"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">types</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">fields</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"post_id"</span> <span class="attr">required</span>=<span class="string">"true"</span> <span class="attr">type</span>=<span class="string">"Long"</span>&gt;</span>唯一标示<span class="tag">&lt;/<span class="name">field</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"post_title"</span> <span class="attr">required</span>=<span class="string">"true"</span> <span class="attr">type</span>=<span class="string">"String"</span>&gt;</span>标题<span class="tag">&lt;/<span class="name">field</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"post_context"</span> <span class="attr">required</span>=<span class="string">"false"</span> <span class="attr">type</span>=<span class="string">"Text"</span>&gt;</span>内容<span class="tag">&lt;/<span class="name">field</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">fields</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">copyField</span> <span class="attr">dest</span>=<span class="string">"text"</span> <span class="attr">source</span>=<span class="string">"post_content"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">copyField</span> <span class="attr">dest</span>=<span class="string">"text"</span> <span class="attr">source</span>=<span class="string">"post_content"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">copyField</span> <span class="attr">dest</span>=<span class="string">"text"</span> <span class="attr">source</span>=<span class="string">"section_name"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">MyMap</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">keyA</span>&gt;</span>valueA<span class="tag">&lt;/<span class="name">keyA</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">keyB</span>&gt;</span>valueB<span class="tag">&lt;/<span class="name">keyB</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">keyC</span>&gt;</span>valueC<span class="tag">&lt;/<span class="name">keyC</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">MyMap</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">schema</span>&gt;</span></div></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+<h2 id="Step2-读取Step1产生的XML到POJO对象中"><a href="#Step2-读取Step1产生的XML到POJO对象中" class="headerlink" title="Step2: 读取Step1产生的XML到POJO对象中"></a>Step2: 读取Step1产生的XML到POJO对象中</h2><hr>
+<h1 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h1><h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><p>XML转换使用的依赖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">    &lt;groupId&gt;com.fasterxml.jackson.dataformat&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;jackson-dataformat-xml&lt;/artifactId&gt;</div><div class="line">    &lt;version&gt;2.9.0&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div><div class="line">&lt;dependency&gt;</div><div class="line">    &lt;groupId&gt;org.codehaus.woodstox&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;woodstox-core-asl&lt;/artifactId&gt;</div><div class="line">    &lt;version&gt;4.4.1&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure></p>
+<p>工具包：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">    &lt;groupId&gt;com.google.guava&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;guava&lt;/artifactId&gt;</div><div class="line">    &lt;version&gt;19.0&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div><div class="line"> &lt;dependency&gt;</div><div class="line">    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;lombok&lt;/artifactId&gt;</div><div class="line">    &lt;version&gt;1.16.18&lt;/version&gt;</div><div class="line">    &lt;scope&gt;provided&lt;/scope&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="构建XmlMapper"><a href="#构建XmlMapper" class="headerlink" title="构建XmlMapper"></a>构建XmlMapper</h2><ol>
+<li>构建JacksonXmlModule；</li>
+<li>设置JacksonXmlModule属性；</li>
+<li>创建XmlMapper，并设置JacksonXmlModule以及修改配置；<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">private ObjectMapper getXMLMapper() &#123;</div><div class="line">    //The Jackson XML module supports the full range of annotations that Jackson provides for annotating our POJOs.</div><div class="line">    //The Jackson XML module adds some additional support for XML specific features</div><div class="line">    JacksonXmlModule module = new JacksonXmlModule();</div><div class="line">    module.setDefaultUseWrapper(false);  //As of version 2.9.0, this is the only configuration options for the XML Module</div><div class="line">    </div><div class="line">    ObjectMapper xmlMapper = new XmlMapper(module);</div><div class="line">    xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, Boolean.FALSE);</div><div class="line">    xmlMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, Boolean.TRUE);</div><div class="line">    xmlMapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, Boolean.TRUE);</div><div class="line">    xmlMapper.configure(DeserializationFeature.FAIL_ON_INVALID_SUBTYPE, Boolean.TRUE);</div><div class="line">    return xmlMapper;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="主要注解"><a href="#主要注解" class="headerlink" title="主要注解"></a>主要注解</h2><h3 id="JacksonXmlRootElement-localName-“schema”"><a href="#JacksonXmlRootElement-localName-“schema”" class="headerlink" title="@JacksonXmlRootElement(localName = “schema”)"></a>@JacksonXmlRootElement(localName = “schema”)</h3><p>设置XML根节点名称<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;schema&gt;</div><div class="line">   ...</div><div class="line">&lt;/schema&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="JacksonXmlProperty-isAttribute-true"><a href="#JacksonXmlProperty-isAttribute-true" class="headerlink" title="@JacksonXmlProperty(isAttribute = true)"></a>@JacksonXmlProperty(isAttribute = true)</h3><p>作为XML的属性存在，而不是节点存在<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@JacksonXmlProperty(isAttribute = true) /* 作为XML的属性存在，而不是节点存在 */</div><div class="line">private String name;</div><div class="line"></div><div class="line">@JacksonXmlProperty(isAttribute = true) /* 作为XML的属性存在，而不是节点存在 */</div><div class="line">private double version;</div></pre></td></tr></table></figure></p>
+<p>对用的XML：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;schema name=&quot;post&quot; version=&quot;1.5&quot;&gt;</div><div class="line">&lt;/schema&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="JacksonXmlElementWrapper-localName-“fields”"><a href="#JacksonXmlElementWrapper-localName-“fields”" class="headerlink" title="@JacksonXmlElementWrapper(localName = “fields”)"></a>@JacksonXmlElementWrapper(localName = “fields”)</h3><p>主要用于集合，如List,Array,Collection等，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@JacksonXmlElementWrapper(localName = &quot;fields&quot;)</div><div class="line">@JsonProperty(&quot;field&quot;)</div><div class="line">private List&lt;Field&gt; fieldList = Lists.newArrayList();</div></pre></td></tr></table></figure></p>
+<p>对应的XML<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;fields&gt;</div><div class="line">	&lt;field name=&quot;post_id&quot; required=&quot;true&quot; type=&quot;Long&quot;&gt;唯一标示&lt;/field&gt;</div><div class="line">	&lt;field name=&quot;post_title&quot; required=&quot;true&quot; type=&quot;String&quot;&gt;标题&lt;/field&gt;</div><div class="line">	&lt;field name=&quot;post_context&quot; required=&quot;false&quot; type=&quot;Text&quot;&gt;内容&lt;/field&gt;</div><div class="line">&lt;/fields&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="JsonProperty-“copyField”"><a href="#JsonProperty-“copyField”" class="headerlink" title="@JsonProperty(“copyField”)"></a>@JsonProperty(“copyField”)</h3><p>设置别名，没有使用 <code>@JacksonXmlElementWrapper</code>对List进行包装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@JsonProperty(&quot;copyField&quot;)</div><div class="line">private List&lt;CopyField&gt; copyFields = Lists.newArrayList();</div></pre></td></tr></table></figure></p>
+<p>对应的XML<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;copyField dest=&quot;text&quot; source=&quot;post_content&quot;/&gt;</div><div class="line">&lt;copyField dest=&quot;text&quot; source=&quot;post_content&quot;/&gt;</div><div class="line">&lt;copyField dest=&quot;text&quot; source=&quot;section_name&quot;/&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="JsonPropertyOrder-“uniqueKey”-“types”"><a href="#JsonPropertyOrder-“uniqueKey”-“types”" class="headerlink" title="@JsonPropertyOrder({“uniqueKey”, “types”})"></a>@JsonPropertyOrder({“uniqueKey”, “types”})</h3><p>指定输出到XML文件时，各节点的顺序</p>
+<h2 id="完整代码和参考链接"><a href="#完整代码和参考链接" class="headerlink" title="完整代码和参考链接"></a>完整代码和参考链接</h2><p><a href="https://github.com/ssslinppp/JavaToolUtils/tree/master/xml/xmlmapper" target="_blank" rel="external">代码</a>   </p>
 
       
     </div>
@@ -400,6 +434,18 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/xml/" rel="tag"># xml</a>
+          
+            <a href="/tags/xmlmapper/" rel="tag"># xmlmapper</a>
+          
+            <a href="/tags/fasterxml/" rel="tag"># fasterxml</a>
+          
+        </div>
+      
 
       
       
@@ -409,15 +455,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/11/02/OrientDB-JDBC-驱动注册与连接获取-源码分析/" rel="next" title="OrientDB-JDBC-驱动注册与连接获取-源码分析">
+                <i class="fa fa-chevron-left"></i> OrientDB-JDBC-驱动注册与连接获取-源码分析
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/28/搭建github博客/" rel="prev" title="搭建github博客">
-                搭建github博客 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -596,7 +642,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#读写XML"><span class="nav-number">1.</span> <span class="nav-text">读写XML</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step1：将Java-POJO对象写入到XML文件，文件内容如下"><span class="nav-number">1.1.</span> <span class="nav-text">Step1：将Java POJO对象写入到XML文件，文件内容如下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step2-读取Step1产生的XML到POJO对象中"><span class="nav-number">1.2.</span> <span class="nav-text">Step2: 读取Step1产生的XML到POJO对象中</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#具体步骤"><span class="nav-number">2.</span> <span class="nav-text">具体步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖"><span class="nav-number">2.1.</span> <span class="nav-text">依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建XmlMapper"><span class="nav-number">2.2.</span> <span class="nav-text">构建XmlMapper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要注解"><span class="nav-number">2.3.</span> <span class="nav-text">主要注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JacksonXmlRootElement-localName-“schema”"><span class="nav-number">2.3.1.</span> <span class="nav-text">@JacksonXmlRootElement(localName = “schema”)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JacksonXmlProperty-isAttribute-true"><span class="nav-number">2.3.2.</span> <span class="nav-text">@JacksonXmlProperty(isAttribute = true)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JacksonXmlElementWrapper-localName-“fields”"><span class="nav-number">2.3.3.</span> <span class="nav-text">@JacksonXmlElementWrapper(localName = “fields”)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JsonProperty-“copyField”"><span class="nav-number">2.3.4.</span> <span class="nav-text">@JsonProperty(“copyField”)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JsonPropertyOrder-“uniqueKey”-“types”"><span class="nav-number">2.3.5.</span> <span class="nav-text">@JsonPropertyOrder({“uniqueKey”, “types”})</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整代码和参考链接"><span class="nav-number">2.4.</span> <span class="nav-text">完整代码和参考链接</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -763,7 +809,7 @@ var jiathis_config={
 		_hcwp.push({widget:"Bloggerstream", widget_id: 97095, selector:".hc-comment-count", label: "{\%COUNT%\}" });
 
 		
-		_hcwp.push({widget:"Stream", widget_id: 97095, xid: "2017/10/28/hello-world/"});
+		_hcwp.push({widget:"Stream", widget_id: 97095, xid: "2017/11/21/【XML读写】使用Java POJO实现XML文件的读写/"});
 		
 
 		(function() {
