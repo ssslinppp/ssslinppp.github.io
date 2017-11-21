@@ -8,10 +8,10 @@
         <category>技术</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>xml</tag>
         <tag>xmlmapper</tag>
         <tag>fasterxml</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -24,10 +24,10 @@
       <tags>
         <tag>orientDB</tag>
         <tag>nosql</tag>
+        <tag>Java</tag>
         <tag>sql</tag>
         <tag>DriverManager</tag>
         <tag>orientdb-jdbc</tag>
-        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
