@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[【ApplicationContextInitializer】springboot如何在所有bean初始化之前加载一个自定义类]]></title>
+    <url>%2F2017%2F11%2F27%2F%E3%80%90ApplicationContextInitializer%E3%80%91springboot%E5%A6%82%E4%BD%95%E5%9C%A8%E6%89%80%E6%9C%89bean%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B9%8B%E5%89%8D%E5%8A%A0%E8%BD%BD%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%2F</url>
+    <content type="text"><![CDATA[【ApplicationContextInitializer】springboot如何在所有bean初始化之前加载一个自定义类 ApplicationContextInitializer使用步骤 实现ApplicationContextInitializer接口； 将ApplicationContextInitializer实现类添加到Springboot中执行； 自定义 ApplicationContextInitializer示例：在所有bean创建之前，添加一个yaml属性源;123456789101112131415161718192021222324252627package com.ssslinppp.contextInitializer;import org.springframework.boot.env.YamlPropertySourceLoader;import org.springframework.context.ApplicationContextInitializer;import org.springframework.context.ConfigurableApplicationContext;import org.springframework.context.annotation.Configuration;import org.springframework.core.env.PropertySource;import org.springframework.core.io.ClassPathResource;import org.springframework.core.io.Resource;import java.io.IOException;@Configurationpublic class YamlFileApplicationContextInitializer implements ApplicationContextInitializer&lt;ConfigurableApplicationContext&gt; &#123; @Override public void initialize(ConfigurableApplicationContext applicationContext) &#123; try &#123;// Resource resource = applicationContext.getResource(&quot;classpath:/config/myConfig.yml&quot;); Resource resource = new ClassPathResource(&quot;/config/myConfig.yml&quot;); YamlPropertySourceLoader sourceLoader = new YamlPropertySourceLoader(); PropertySource&lt;?&gt; yamlTestProperties = sourceLoader.load(&quot;yaml&quot;, resource, null); applicationContext.getEnvironment().getPropertySources().addFirst(yamlTestProperties); &#125; catch (IOException e) &#123; throw new RuntimeException(e); &#125; &#125;&#125; 添加ApplicationContextInitializer实现类到Springboot中方式1： spring.factories文件中定义文件位置：src/main/java/resources/META-INF/spring.factories文件内容：12org.springframework.context.ApplicationContextInitializer=\ com.ssslinppp.contextInitializer.YamlFileApplicationContextInitializer 方式2：使用SpringApplication.addInitializers()123456public static void main(String[] args) &#123; SpringApplication springApplication = new SpringApplication(YamlApplication.class); //关键一步：将一个或多个initializer加入至spring容器中 springApplication.addInitializers(new YamlFileApplicationContextInitializer()); springApplication.run(args);&#125; 方式3：在application.properties中配置1context.initializer.classes=com.ssslinppp.contextInitializer.YamlFileApplicationContextInitializer]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>ApplicationContextInitializer</tag>
+        <tag>Springboot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[【XML读写】使用Java POJO实现XML文件的读写]]></title>
     <url>%2F2017%2F11%2F21%2F%E3%80%90XML%E8%AF%BB%E5%86%99%E3%80%91%E4%BD%BF%E7%94%A8Java%20POJO%E5%AE%9E%E7%8E%B0XML%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%86%99%2F</url>
     <content type="text"><![CDATA[读写XML使用fasterxml实现XML文件的读写操作。完全使用注解的方式读取XML内容，使用方便。 Step1：将Java POJO对象写入到XML文件，文件内容如下1234567891011121314151617181920212223&lt;schema name="post" version="1.5"&gt; &lt;uniqueKey&gt;post_id&lt;/uniqueKey&gt; &lt;types&gt; &lt;fieldType className="java.lang.Long" name="Long"/&gt; &lt;fieldType className="java.lang.String" name="String"/&gt; &lt;fieldType className="xxx.yyy.text" name="Text"/&gt; &lt;analyzer tokenizerClass="solr.StandartTokenizerFactory" type="index"/&gt; &lt;analyzer tokenizerClass="solr.StandartTokenizerFactory" type="query"/&gt; &lt;/types&gt; &lt;fields&gt; &lt;field name="post_id" required="true" type="Long"&gt;唯一标示&lt;/field&gt; &lt;field name="post_title" required="true" type="String"&gt;标题&lt;/field&gt; &lt;field name="post_context" required="false" type="Text"&gt;内容&lt;/field&gt; &lt;/fields&gt; &lt;copyField dest="text" source="post_content"/&gt; &lt;copyField dest="text" source="post_content"/&gt; &lt;copyField dest="text" source="section_name"/&gt; &lt;MyMap&gt; &lt;keyA&gt;valueA&lt;/keyA&gt; &lt;keyB&gt;valueB&lt;/keyB&gt; &lt;keyC&gt;valueC&lt;/keyC&gt; &lt;/MyMap&gt;&lt;/schema&gt; Step2: 读取Step1产生的XML到POJO对象中 具体步骤依赖XML转换使用的依赖12345678910&lt;dependency&gt; &lt;groupId&gt;com.fasterxml.jackson.dataformat&lt;/groupId&gt; &lt;artifactId&gt;jackson-dataformat-xml&lt;/artifactId&gt; &lt;version&gt;2.9.0&lt;/version&gt;&lt;/dependency&gt;&lt;dependency&gt; &lt;groupId&gt;org.codehaus.woodstox&lt;/groupId&gt; &lt;artifactId&gt;woodstox-core-asl&lt;/artifactId&gt; &lt;version&gt;4.4.1&lt;/version&gt;&lt;/dependency&gt; 工具包：1234567891011&lt;dependency&gt; &lt;groupId&gt;com.google.guava&lt;/groupId&gt; &lt;artifactId&gt;guava&lt;/artifactId&gt; &lt;version&gt;19.0&lt;/version&gt;&lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.projectlombok&lt;/groupId&gt; &lt;artifactId&gt;lombok&lt;/artifactId&gt; &lt;version&gt;1.16.18&lt;/version&gt; &lt;scope&gt;provided&lt;/scope&gt;&lt;/dependency&gt; 构建XmlMapper 构建JacksonXmlModule； 设置JacksonXmlModule属性； 创建XmlMapper，并设置JacksonXmlModule以及修改配置；12345678910111213private ObjectMapper getXMLMapper() &#123; //The Jackson XML module supports the full range of annotations that Jackson provides for annotating our POJOs. //The Jackson XML module adds some additional support for XML specific features JacksonXmlModule module = new JacksonXmlModule(); module.setDefaultUseWrapper(false); //As of version 2.9.0, this is the only configuration options for the XML Module ObjectMapper xmlMapper = new XmlMapper(module); xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, Boolean.FALSE); xmlMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, Boolean.TRUE); xmlMapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, Boolean.TRUE); xmlMapper.configure(DeserializationFeature.FAIL_ON_INVALID_SUBTYPE, Boolean.TRUE); return xmlMapper;&#125; 主要注解@JacksonXmlRootElement(localName = “schema”)设置XML根节点名称123&lt;schema&gt; ...&lt;/schema&gt; @JacksonXmlProperty(isAttribute = true)作为XML的属性存在，而不是节点存在12345@JacksonXmlProperty(isAttribute = true) /* 作为XML的属性存在，而不是节点存在 */private String name;@JacksonXmlProperty(isAttribute = true) /* 作为XML的属性存在，而不是节点存在 */private double version; 对用的XML：12&lt;schema name=&quot;post&quot; version=&quot;1.5&quot;&gt;&lt;/schema&gt; @JacksonXmlElementWrapper(localName = “fields”)主要用于集合，如List,Array,Collection等，123@JacksonXmlElementWrapper(localName = &quot;fields&quot;)@JsonProperty(&quot;field&quot;)private List&lt;Field&gt; fieldList = Lists.newArrayList(); 对应的XML12345&lt;fields&gt; &lt;field name=&quot;post_id&quot; required=&quot;true&quot; type=&quot;Long&quot;&gt;唯一标示&lt;/field&gt; &lt;field name=&quot;post_title&quot; required=&quot;true&quot; type=&quot;String&quot;&gt;标题&lt;/field&gt; &lt;field name=&quot;post_context&quot; required=&quot;false&quot; type=&quot;Text&quot;&gt;内容&lt;/field&gt;&lt;/fields&gt; @JsonProperty(“copyField”)设置别名，没有使用 @JacksonXmlElementWrapper对List进行包装12@JsonProperty(&quot;copyField&quot;)private List&lt;CopyField&gt; copyFields = Lists.newArrayList(); 对应的XML123&lt;copyField dest=&quot;text&quot; source=&quot;post_content&quot;/&gt;&lt;copyField dest=&quot;text&quot; source=&quot;post_content&quot;/&gt;&lt;copyField dest=&quot;text&quot; source=&quot;section_name&quot;/&gt; @JsonPropertyOrder({“uniqueKey”, “types”})指定输出到XML文件时，各节点的顺序 完整代码和参考链接代码]]></content>
@@ -8,10 +21,10 @@
         <category>技术</category>
       </categories>
       <tags>
+        <tag>Java</tag>
         <tag>xml</tag>
         <tag>xmlmapper</tag>
         <tag>fasterxml</tag>
-        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -24,10 +37,10 @@
       <tags>
         <tag>orientDB</tag>
         <tag>nosql</tag>
-        <tag>Java</tag>
         <tag>sql</tag>
         <tag>DriverManager</tag>
         <tag>orientdb-jdbc</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
